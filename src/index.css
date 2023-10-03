@@ -1,7 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
   --fonte: 'Montserrat', sans-serif;
-  --preto: "#ffffff";
-  --branco: "#000000";
+  --branco: "#ffffff";
+  --preto: "#000000";
   --cinza: "#e2e2e2";
 }
 body {
@@ -9,4 +13,10 @@ body {
   background-color: var(--branco);
   margin: 0;
   padding: 0;
+}
+
+@layer utilities{
+  .container{
+    @apply lg:w-[70%] max-lg:w-[80%] max-w-[1100px]
+  }
 }
