@@ -9,13 +9,13 @@ export default function Cabecalho() {
       id={styles.cabecalho}
     >
       <nav className="container max-sm:flex max-sm:items-center max-sm:flex-col sm:flex sm:justify-between">
-        <Link to="./">
+        <Link to="/">
           <img src={logo} alt="Logo do CineTag" />
         </Link>
 
         <div className="text-cor-branco flex items-center gap-10">
-          <Link>Home</Link>
-          <Link>Favoritos</Link>
+          <Link to="/">Home</Link>
+          <Link to="/favoritos">Favoritos</Link>
         </div>
       </nav>
     </header>
