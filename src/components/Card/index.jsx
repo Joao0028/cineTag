@@ -13,14 +13,13 @@ function Card({titulo, capa, id}){
         return favorito === true? () => setFavorito(false) : () => setFavorito(true)
     }
     
-    useEffect(()=>{
-        return console.log(favorito)
-    },[favorito])
+  
 
-    return <div>
-        <img src={capa} alt={`Capa de ${titulo}`} />
-        <div>
-            <h1>{titulo}</h1>
+    return <div className="shadow-md bg-cor-cinza font-semibold mb-4 max-w-[282px]
+    ">
+        <img  src={capa} alt={`Capa de ${titulo}`} />
+        <div className="p-4">
+            <h2 className="mb-3">{titulo}</h2>
             <button onClick={mudaEstado()}><img src={verificaEstado}  alt={`logo de ${mudaAlt}`} /></button>
         </div>
     </div>
