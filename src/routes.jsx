@@ -4,6 +4,7 @@ import Inicio from "./pages/inicio";
 import Cabecalho from "./components/Cabecalho";
 import Footer from "./components/Footer";
 import FavoritosProvider from "./contextos/Favoritos";
+import Player from "./components/Player";
 
 export default function AppRoutes() {
   return (
@@ -13,6 +14,7 @@ export default function AppRoutes() {
         <Routes>
           <Route path="/" element={<Inicio />} exact />
           <Route path="/favoritos" element={<Favoritos />} />
+          <Route path="/:id" element={<Player />} />
         </Routes>
       </FavoritosProvider>
       <Footer />

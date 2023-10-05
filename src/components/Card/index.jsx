@@ -1,28 +1,40 @@
-import { useState } from "react"
-import favoritado from "/imagens/favorite.png"
-import naoFavoritado from "/imagens/favorite_outline.png"
-import { useEffect } from "react"
+import { useState } from "react";
+import favoritado from "/imagens/favorite.png";
+import naoFavoritado from "/imagens/favorite_outline.png";
+import { useEffect } from "react";
+import { useFavoritoContext } from "../../contextos/Favoritos";
+import { Link } from "react-router-dom";
 
-function Card({titulo, capa, id}){
-    const [favorito , setFavorito] = useState(false)
+function Card({ titulo, capa, id }) {
+  const { favorito, adicionarFavorito } = useFavoritoContext();
 
-    const verificaEstado = favorito === true? favoritado : naoFavoritado
-    const mudaAlt = favorito === true? "favoritado." : "não favoritado."
-    
-    function mudaEstado(){
-        return favorito === true? () => setFavorito(false) : () => setFavorito(true)
-    }
-    
-  
+  const ehFavorito = favorito.some((fav) => fav.id === id);
+  const icone = ehFavorito ? favoritado : naoFavoritado;
 
-    return <div className="shadow-md bg-cor-cinza font-semibold mb-4 max-w-[282px]
-    ">
-        <img  src={capa} alt={`Capa de ${titulo}`} />
-        <div className="p-4">
-            <h2 className="mb-3">{titulo}</h2>
-            <button onClick={mudaEstado()}><img src={verificaEstado}  alt={`logo de ${mudaAlt}`} /></button>
-        </div>
+  return (
+    <div
+      className="shadow-md bg-cor-cinza font-semibold mb-4 max-w-[280px]
+    "
+    >
+      
+      <Link to={`/${id}`}>
+      <img src={capa} alt={`Capa de ${titulo}`} />
+      </Link>
+      <div className="p-4 ">
+        <Link to={`/${id}`}>
+        <h2 className="mb-3">{titulo}</h2>
+        </Link>
+        
+        <img
+          src={icone}
+          alt={`logo de favoritar`}
+          onClick={() => {
+            adicionarFavorito({ id, titulo, capa });
+          }}
+        />
+      </div>
     </div>
+  );
 }
 
-export default Card
+export default Card;
