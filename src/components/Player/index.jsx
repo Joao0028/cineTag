@@ -2,12 +2,16 @@ import { useParams } from "react-router-dom";
 import Banner from "../Banner";
 import Titulo from "../Titulo";
 import videos from "../../json/db.json";
+import PaginaNaoEncontrada from "../PaginaNaoEncontrada";
 
 export default function Player() {
   const parametros = useParams();
   const video = videos.find((video) => {
     return video.id == Number(parametros.id);
   });
+  if(!video){
+    return <PaginaNaoEncontrada/>
+  }
   return (
     <>
       <Banner imagem="player" />
